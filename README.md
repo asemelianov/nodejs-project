@@ -23,3 +23,5 @@
     2. kubectl apply -f deploy.yml      # deploy
     3. watch -n 1 kubectl get pods      # watch the pods being created
     4. kubectl get all                  # see all the resources created
+    5. kubectl delete -f deploy.yml      # delete all the resouces created
+    6. kubectl get all

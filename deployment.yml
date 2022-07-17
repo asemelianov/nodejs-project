@@ -24,7 +24,7 @@ spec:
       containers:
       - name: nodejs-project-app
         # pulling image from my DockerHub
-        image: asemelianov/nodejs-project:latest
+        image: emelianovas/nodejs-project:latest
         # using if not present works well with images that has tag
         # if you image is tag:lastest - use Always otherwise you
         # wouldn't get the fresh version of your image
@@ -85,8 +85,9 @@ spec:
       port: 80             # this is service port 80
       targetPort: 30002
       # nodePort: 30003      # this is for when using type: NodePort
-    - name: https
-      protocol: TCP
-      port: 443            # this is service port 443
-      targetPort: 30002
+#    - name: https
+#      protocol: TCP
+#      port: 443            # this is service port 443
+#      targetPort: 30002
       # nodePort: 30004      # this is for when using type: NodePort
+
