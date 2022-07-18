@@ -7,22 +7,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nodej-project-app
+  name: nodejs-deployment
+  labels:
+    app: nodejs-app
   namespace: default
 spec:
   replicas: 4                     # this is number of pods
   selector:
     matchLabels:
-      app: nodejs-project-app
+      app: nodejs-app
   template:
     metadata:
       labels:
-        app: nodejs-project-app
+        app: nodejs-app
     spec:
       # Kubernetes run docker pull pseudo/your-image:latest under the hood
       # Image field in Kubernetes resources is simply the docker image to run.
       containers:
-      - name: nodejs-project-app
+      - name: nodejs-api
         # pulling image from my DockerHub
         image: emelianovas/nodejs-project:latest
         # using if not present works well with images that has tag
@@ -63,7 +65,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: nodejs-project-app-entrypoint
+  name: nodejs-service
   namespace: default
 spec:
   # -----------------------------------------------------------*
@@ -77,7 +79,7 @@ spec:
   # type: NodePort
   type: LoadBalancer
   selector:
-    app: nodejs-project-app
+    app: nodejs-app
   # The range of valid ports in kubernetes is 30000-32767
   ports:
     - name: http
@@ -90,4 +92,3 @@ spec:
       port: 443            # this is service port 443
       targetPort: 30002
       # nodePort: 30004      # this is for when using type: NodePort
-
