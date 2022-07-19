@@ -47,7 +47,7 @@ spec:
             cpu: "200m"
         # specify the container port
         ports:
-        - containerPort: 8080
+        - containerPort: 30002
 
     # -----------------------------------------------------------*
     # If your image is hosted in a private docker hub repo,
@@ -85,10 +85,10 @@ spec:
     - name: http
       protocol: TCP
       port: 80             # this is service port 80
-      targetPort: 8080
+      targetPort: 30002
       # nodePort: 30003      # this is for when using type: NodePort
     - name: https
       protocol: TCP
       port: 443            # this is service port 443
-      targetPort: 8080
+      targetPort: 30002
       # nodePort: 30004      # this is for when using type: NodePort
